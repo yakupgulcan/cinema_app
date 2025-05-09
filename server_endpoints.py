@@ -442,7 +442,7 @@ def start_stock_reducer_thread():
 
 if __name__ == "__main__":
     start_stock_reducer_thread()
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 
