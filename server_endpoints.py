@@ -9,7 +9,7 @@ import threading
 import DB.backend_functions as bacF
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'DB/Database/uploads'
+UPLOAD_FOLDER = 'DB/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 DATABASE = "DB/cinema.db"
