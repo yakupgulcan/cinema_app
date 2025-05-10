@@ -2,28 +2,20 @@ import sqlite3
 from flask import Flask, request, send_from_directory, jsonify
 import os
 from werkzeug.utils import secure_filename
-print("HERE")
 import DB.query_database as db
-print("HERE2")
-
 import random
 import time
 import threading
 import DB.backend_functions as bacF
-print("HERE3")
 
-db_path = "DB/cinema.db"
-uploadsPath = "DB/uploads"
-print("DB path in server : " + db_path)
 app = Flask(__name__)
-UPLOAD_FOLDER = uploadsPath
+UPLOAD_FOLDER = 'DB/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-DATABASE = db_path
+DATABASE = "DB/cinema.db"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def get_db_connection():
-    print("hi" + DATABASE)
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
@@ -196,13 +188,11 @@ def add_movie_rating_endpoint():
         return jsonify({'message': 'Rating added successfully', 'result_id': result}), 201
 
     except Exception as e:
-        print(e)
         return jsonify({'error': str(e)}), 500
 
 
 @app.route('/movies', methods=['GET'])
 def get_movies():
-    print("hi" + DATABASE)
     genre = request.args.get('genre')
 
     if genre:
@@ -216,7 +206,7 @@ def get_movies():
 @app.route('/halls', methods=['GET'])
 def get_halls():
     movies = db.get_all_halls()
-    print("-*--ASHAJHSSAJHSJAH")
+
     return jsonify(movies)
 
 
@@ -384,7 +374,7 @@ def reduce_concession_stocks_periodically():
     while True:
         try:
             # Connect to the database
-            conn = sqlite3.connect(db_path)
+            conn = sqlite3.connect("DB/cinema.db")
             cursor = conn.cursor()
             
             # Fetch all concession items
@@ -433,12 +423,12 @@ def serve_static(filename):
 
 @app.route('/')
 def serve_client():
-    return send_from_directory('DB/WEBS/adminWeb/', 'index.html')
+    return send_from_directory('DB/WEBS/clientWeb/', 'index.html')
 
 # DB/adminWeb/ içindeki diğer statik dosyaları sunmak için
 @app.route('/clientWeb/<path:filename>')
 def serve_clientFiles(filename):
-    return send_from_directory('DB/WEBS/adminWeb/', filename)
+    return send_from_directory('DB/WEBS/clientWeb/', filename)
 
 
 def start_stock_reducer_thread():
@@ -450,8 +440,9 @@ def start_stock_reducer_thread():
     print("Concession stock reducer thread started.")
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    start_stock_reducer_thread()
+    app.run(host='0.0.0.0', port=5000)
 
-start_stock_reducer_thread()
+
 
 

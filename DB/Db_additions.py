@@ -1,20 +1,7 @@
-#import query_database as db
+import query_database as db
 import sqlite3
 
-#print(db.add_admin("ykp", "celali"))
-
-def delete_movie() -> bool:
-   
-    conn = sqlite3.connect("Kodlar/DB/cinema.db")
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM Movie WHERE movieID = ?", (9,))
-    deleted = cursor.rowcount > 0
-    conn.commit()
-    conn.close()
-    return deleted
-
-
-print(delete_movie())
+print(db.add_admin("ykp", "celali"))
 
 ##### Concession Add
 # print(db.add_concession("Patlamış Mısır", 43, 50, 300))

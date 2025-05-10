@@ -3,15 +3,12 @@ import DB.backend_functions
 from typing import Optional, Dict, List, Any
 from datetime import datetime, timedelta
 
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = "DB/cinema.db"
+from DB import backend_functions
+
 
 def connect_db():
-    print(basedir)
-    print("DB path in query : " + db_path)
     """Establishes and returns a connection to the cinema database."""
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect("DB/cinema.db")
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
     return conn
 
@@ -239,7 +236,6 @@ def get_sessions_of_movie(movie_id: int) -> List[Dict[str, Any]]:
     """
     conn = connect_db()
     cursor = conn.cursor()
-    print("hello")
     cursor.execute("""
         SELECT s.*, m.movieName, h.hallName 
         FROM Session s
@@ -513,7 +509,7 @@ def add_movie_rating(customer_id: int, movie_id: int, rating: float, rating_date
     rating_id = cursor.lastrowid
     conn.commit()
     conn.close()
-    DB.backend_functions.update_movie_ratings()
+    backend_functions.update_movie_ratings()
     return rating_id
 
 
@@ -795,7 +791,7 @@ def update_customer(customer_id: int,
         budget: Optional new budget.
     Returns True if the customer was updated, False if not found or no updates provided.
     """
-    conn = sqlite3.connect(db_path)  # Assuming connection to cinema.db
+    conn = sqlite3.connect("cinema.db")  # Assuming connection to cinema.db
     cursor = conn.cursor()
     
     updates = []
