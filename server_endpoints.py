@@ -9,7 +9,7 @@ import threading
 import DB.backend_functions as bacF
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'DB/uploads'
+UPLOAD_FOLDER = 'DB/Database/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 DATABASE = "DB/cinema.db"
@@ -207,7 +207,7 @@ def get_movies():
 @app.route('/halls', methods=['GET'])
 def get_halls():
     movies = db.get_all_halls()
-
+    print("-*--ASHAJHSSAJHSJAH")
     return jsonify(movies)
 
 

@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
-    conn = sqlite3.connect("DB/cinema.db")
+    conn = sqlite3.connect("Database/cinema.db")
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
     return conn
 
