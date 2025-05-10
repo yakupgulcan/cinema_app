@@ -434,12 +434,12 @@ def serve_static(filename):
 
 @app.route('/')
 def serve_client():
-    return send_from_directory('DB/WEBS/clientWeb/', 'index.html')
+    return send_from_directory('DB/WEBS/adminWeb/', 'index.html')
 
 # DB/adminWeb/ içindeki diğer statik dosyaları sunmak için
 @app.route('/clientWeb/<path:filename>')
 def serve_clientFiles(filename):
-    return send_from_directory('DB/WEBS/clientWeb/', filename)
+    return send_from_directory('DB/WEBS/adminWeb/', filename)
 
 
 def start_stock_reducer_thread():
