@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir, "cinema.db")
+db_path = "DB/cinema.db"
 
 def connect_db():
     print(basedir)

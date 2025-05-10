@@ -11,10 +11,9 @@ import time
 import threading
 import DB.backend_functions as bacF
 print("HERE3")
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir, "DB", "cinema.db")
-uploadsPath = os.path.join(basedir, "DB", "uploads")
+
+db_path = "DB/cinema.db"
+uploadsPath = "DB/uploads"
 print("DB path in server : " + db_path)
 app = Flask(__name__)
 UPLOAD_FOLDER = uploadsPath

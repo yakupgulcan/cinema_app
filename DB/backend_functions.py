@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir,"cinema.db")
+db_path = "DB/cinema.db"
 print("there you are" + db_path)
 
 def connect_db():
