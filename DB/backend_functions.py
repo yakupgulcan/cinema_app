@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir,"cinema.db")
-print(basedir)
+print("there you are" + db_path)
 
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
