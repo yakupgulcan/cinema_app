@@ -5,9 +5,11 @@ from datetime import datetime, timedelta
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir,"cinema.db")
+print(basedir)
 
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
+    print(basedir)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
     return conn

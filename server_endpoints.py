@@ -2,11 +2,15 @@ import sqlite3
 from flask import Flask, request, send_from_directory, jsonify
 import os
 from werkzeug.utils import secure_filename
+print("HERE")
 import DB.query_database as db
+print("HERE2")
+
 import random
 import time
 import threading
 import DB.backend_functions as bacF
+print("HERE3")
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, "DB", "cinema.db")
@@ -20,6 +24,7 @@ DATABASE = db_path
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def get_db_connection():
+    print("hi" + DATABASE)
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
@@ -198,6 +203,7 @@ def add_movie_rating_endpoint():
 
 @app.route('/movies', methods=['GET'])
 def get_movies():
+    print("hi" + DATABASE)
     genre = request.args.get('genre')
 
     if genre:

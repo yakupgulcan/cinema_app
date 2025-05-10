@@ -8,6 +8,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, "cinema.db")
 
 def connect_db():
+    print(basedir)
     """Establishes and returns a connection to the cinema database."""
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
