@@ -9,6 +9,8 @@ print(basedir)
 
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
+    print("DB path in backed : " + db_path)
+
     print(basedir)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name

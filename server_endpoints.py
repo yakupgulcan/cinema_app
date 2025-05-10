@@ -15,7 +15,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, "DB", "cinema.db")
 uploadsPath = os.path.join(basedir, "DB", "uploads")
-
+print("DB path in server : " + db_path)
 app = Flask(__name__)
 UPLOAD_FOLDER = uploadsPath
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
