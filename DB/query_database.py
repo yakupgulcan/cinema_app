@@ -3,10 +3,13 @@ import DB.backend_functions
 from typing import Optional, Dict, List, Any
 from datetime import datetime, timedelta
 
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir, "cinema.db")
 
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
-    conn = sqlite3.connect("DB/cinema.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
     return conn
 
@@ -790,7 +793,7 @@ def update_customer(customer_id: int,
         budget: Optional new budget.
     Returns True if the customer was updated, False if not found or no updates provided.
     """
-    conn = sqlite3.connect("cinema.db")  # Assuming connection to cinema.db
+    conn = sqlite3.connect(db_path)  # Assuming connection to cinema.db
     cursor = conn.cursor()
     
     updates = []

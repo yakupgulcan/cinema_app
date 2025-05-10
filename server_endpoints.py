@@ -7,12 +7,16 @@ import random
 import time
 import threading
 import DB.backend_functions as bacF
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir, "DB", "cinema.db")
+uploadsPath = os.path.join(basedir, "DB", "uploads")
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'DB/uploads'
+UPLOAD_FOLDER = uploadsPath
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-DATABASE = "DB/cinema.db"
+DATABASE = db_path
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def get_db_connection():
@@ -375,7 +379,7 @@ def reduce_concession_stocks_periodically():
     while True:
         try:
             # Connect to the database
-            conn = sqlite3.connect("DB/cinema.db")
+            conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
             
             # Fetch all concession items

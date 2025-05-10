@@ -2,9 +2,13 @@ import sqlite3
 from typing import Dict, List
 from datetime import datetime, timedelta
 
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir,"cinema.db")
+
 def connect_db():
     """Establishes and returns a connection to the cinema database."""
-    conn = sqlite3.connect("DB/cinema.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Enables accessing columns by name
     return conn
 
@@ -88,7 +92,7 @@ def user_login(name: str, password: str) -> tuple:
     Returns 0 for not found, 1 for customer, 2 for admin
     """
     
-    conn = sqlite3.connect("DB/cinema.db")  # Assuming connect_db() is meant to connect to cinema.db
+    conn = sqlite3.connect(db_path)  # Assuming connect_db() is meant to connect to cinema.db
     cursor = conn.cursor()
     
     # Check if the user is a customer
