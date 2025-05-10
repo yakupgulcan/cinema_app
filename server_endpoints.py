@@ -441,9 +441,8 @@ def start_stock_reducer_thread():
     print("Concession stock reducer thread started.")
 
 if __name__ == "__main__":
-    start_stock_reducer_thread()
     app.run(debug=False)
 
-
+start_stock_reducer_thread()
 
 
