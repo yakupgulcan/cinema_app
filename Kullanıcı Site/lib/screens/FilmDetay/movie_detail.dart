@@ -72,7 +72,7 @@ class MovieDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        movie.movieName,
+                        movie.movieName ,
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class MovieDetailPage extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           RatingBar.builder(
-                            initialRating: movie.averagePoint ?? 5.0,
+                            initialRating: movie.averagePoint ?? 0,
                             minRating: 1,
                             direction: Axis.horizontal,
                             allowHalfRating: true,
@@ -109,7 +109,7 @@ class MovieDetailPage extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           Text(
-                            '${movie.averagePoint}/10',
+                            '${movie.averagePoint ?? 0}/5',
                             style: const TextStyle(color: Colors.white),
                           ),
                           const SizedBox(width: 10),

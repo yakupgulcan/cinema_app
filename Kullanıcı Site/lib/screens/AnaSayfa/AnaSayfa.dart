@@ -481,7 +481,7 @@ class MovieCard extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             RatingBar.builder(
-              initialRating: movie.averagePoint!,
+              initialRating: movie.averagePoint ?? 0,
               minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,
